@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - KrishiMitra</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2 class="auth-title">Create your account</h2>
+                <p class="auth-subtitle">Join the smart farming revolution</p>
+            </div>
+
+            <div id="registerMessage" class="error-message" style="display: none;"></div>
+
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="form-input" 
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="username">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        class="form-input" 
+                        placeholder="Choose a username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="form-input" 
+                        placeholder="Create a password"
+                        required
+                        minlength="6"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="confirmPassword">Confirm Password</label>
+                    <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        class="form-input" 
+                        placeholder="Confirm your password"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem;">
+                        <input type="checkbox" id="terms" required>
+                        I agree to the <a href="#" style="color: #16a34a;">Terms of Service</a> and <a href="#" style="color: #16a34a;">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit" id="registerButton">
+                    Sign up
+                </button>
+            </form>
+
+            <div class="auth-link">
+                <a href="login.html">Already have an account? Sign in</a>
+            </div>
+
+            <div class="auth-link">
+                <a href="index.html">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    
+    
+    
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const terms = document.getElementById('terms').checked;
+            const messageDiv = document.getElementById('registerMessage');
+            const button = document.getElementById('registerButton');
+            
+            // Validation
+            if (!terms) {
+                messageDiv.className = 'error-message';
+                messageDiv.textContent = 'Please accept the Terms of Service and Privacy Policy.';
+                messageDiv.style.display = 'block';
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                messageDiv.className = 'error-message';
+                messageDiv.textContent = 'Passwords do not match.';
+                messageDiv.style.display = 'block';
+                return;
+            }
+            
+            if (password.length < 6) {
+                messageDiv.className = 'error-message';
+                messageDiv.textContent = 'Password must be at least 6 characters long.';
+                messageDiv.style.display = 'block';
+                return;
+            }
+            
+            // Show loading state
+            button.textContent = 'Creating account...';
+            button.disabled = true;
+            messageDiv.style.display = 'none';
+            
+            // Simulate API call (replace with actual registration)
+            setTimeout(() => {
+                if (email && username && password) {
+                    // Store user data in localStorage (mock registration)
+                    localStorage.setItem('user', JSON.stringify({
+                        email: email,
+                        username: username,
+                        isAuthenticated: true
+                    }));
+                    
+                    messageDiv.className = 'success-message';
+                    messageDiv.textContent = '🎉 Account created successfully! Redirecting to chat...';
+                    messageDiv.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        window.location.href = 'chat.html';
+                    }, 2000);
+                } else {
+                    messageDiv.className = 'error-message';
+                    messageDiv.textContent = 'Please fill in all fields.';
+                    messageDiv.style.display = 'block';
+                }
+                
+                // Reset button
+                button.textContent = 'Sign up';
+                button.disabled = false;
+            }, 1500);
+        });
+
+        // Real-time password confirmation validation
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            
+            if (confirmPassword && password !== confirmPassword) {
+                this.style.borderColor = '#dc2626';
+            } else {
+                this.style.borderColor = '#e5e7eb';
+            }
+        });
+    </script>
+</body>
+</html>

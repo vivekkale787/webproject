@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - KrishiMitra</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo">🌾 KrishiMitra</a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="chat.html" class="nav-link">AI Chat</a>
+                    <a href="support.html" class="nav-link active">Support</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div style="min-height: 100vh; background-color: #f0f9ff;">
+        <div class="container" style="padding: 2rem 20px;">
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h1 style="font-size: 2.5rem; font-weight: 800; color: #1f2937; margin-bottom: 1rem;">
+                    🤝 Support Center
+                </h1>
+                <p style="font-size: 1.125rem; color: #6b7280;">
+                    We're here to help you get the most out of KrishiMitra
+                </p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="support-tabs">
+                <div class="tabs-nav">
+                    <button class="tab-button active" onclick="showTab('contact')">📝 Contact Us</button>
+                    <button class="tab-button" onclick="showTab('faq')">❓ FAQ</button>
+                    <button class="tab-button" onclick="showTab('docs')">📚 Help Docs</button>
+                    <button class="tab-button" onclick="showTab('chat')">💬 Live Chat</button>
+                </div>
+
+                <!-- Contact Tab -->
+                <div id="contact" class="tab-content">
+                    <div style="max-width: 600px; margin: 0 auto;">
+                        <h2 style="font-size: 1.5rem; font-weight: bold; color: #1f2937; margin-bottom: 1.5rem;">Get in Touch</h2>
+                        
+                        <div id="supportMessage" style="display: none; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1.5rem;"></div>
+
+                        <form id="supportForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                                <div class="form-group">
+                                    <label class="form-label" for="name">Full Name</label>
+                                    <input type="text" id="name" class="form-input" placeholder="Enter your name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="email">Email Address</label>
+                                    <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="subject">Subject</label>
+                                <select id="subject" class="form-input" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="Technical Issue">Technical Issue</option>
+                                    <option value="Account Problem">Account Problem</option>
+                                    <option value="Feature Request">Feature Request</option>
+                                    <option value="AI Chat Issue">AI Chat Issue</option>
+                                    <option value="Billing Question">Billing Question</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="message">Message</label>
+                                <textarea id="message" rows="6" class="form-input" placeholder="Describe your issue or question..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit" id="supportSubmitBtn">
+                                Send Message
+                            </button>
+                        </form>
+
+                        <!-- Contact Information -->
+                        <div class="contact-grid">
+                            <div class="contact-card">
+                                <div class="contact-icon">📧</div>
+                                <h3 class="contact-title">Email</h3>
+                                <p class="contact-info">support@krishimitra.ai</p>
+                            </div>
+                            <div class="contact-card">
+                                <div class="contact-icon">📞</div>
+                                <h3 class="contact-title">Phone</h3>
+                                <p class="contact-info">+91 98765 43210</p>
+                            </div>
+                            <div class="contact-card">
+                                <div class="contact-icon">💬</div>
+                                <h3 class="contact-title">WhatsApp</h3>
+                                <p class="contact-info">+91 98765 43210</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Tab -->
+                <div id="faq" class="tab-content" style="display: none;">
+                    <div style="max-width: 800px; margin: 0 auto;">
+                        <h2 style="font-size: 1.5rem; font-weight: bold; color: #1f2937; margin-bottom: 1.5rem;">Frequently Asked Questions</h2>
+                        
+                        <div id="faqList" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <!-- FAQ items will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Help Docs Tab -->
+                <div id="docs" class="tab-content" style="display: none;">
+                    <div style="max-width: 900px; margin: 0 auto;">
+                        <h2 style="font-size: 1.5rem; font-weight: bold; color: #1f2937; margin-bottom: 1.5rem;">Help Documentation</h2>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                            <div class="doc-card">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
+                                <h3 style="font-size: 1.125rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Getting Started Guide</h3>
+                                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">Learn how to set up your account and start using KrishiMitra</p>
+                                <button style="color: #16a34a; font-weight: 500; font-size: 0.875rem; background: none; border: none; cursor: pointer;">Read More →</button>
+                            </div>
+
+                            <div class="doc-card">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">🤖</div>
+                                <h3 style="font-size: 1.125rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">AI Chat Features</h3>
+                                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">Understand how to get the best results from our AI assistant</p>
+                                <button style="color: #16a34a; font-weight: 500; font-size: 0.875rem; background: none; border: none; cursor: pointer;">Read More →</button>
+                            </div>
+
+                            <div class="doc-card">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">📸</div>
+                                <h3 style="font-size: 1.125rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Image Analysis</h3>
+                                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">Tips for uploading and analyzing crop images effectively</p>
+                                <button style="color: #16a34a; font-weight: 500; font-size: 0.875rem; background: none; border: none; cursor: pointer;">Read More →</button>
+                            </div>
+
+                            <div class="doc-card">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">📈</div>
+                                <h3 style="font-size: 1.125rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Market Insights</h3>
+                                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">How to interpret and use market data for better decisions</p>
+                                <button style="color: #16a34a; font-weight: 500; font-size: 0.875rem; background: none; border: none; cursor: pointer;">Read More →</button>
+                            </div>
+
+                            <div class="doc-card">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">🌦️</div>
+                                <h3 style="font-size: 1.125rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Weather Integration</h3>
+                                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">Understanding weather forecasts and farming recommendations</p>
+                                <button style="color: #16a34a; font-weight: 500; font-size: 0.875rem; background: none; border: none; cursor: pointer;">Read More →</button>
+                            </div>
+
+                            <div class="doc-card">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">🔧</div>
+                                <h3 style="font-size: 1.125rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Troubleshooting</h3>
+                                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">Common issues and their solutions</p>
+                                <button style="color: #16a34a; font-weight: 500; font-size: 0.875rem; background: none; border: none; cursor: pointer;">Read More →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Chat Tab -->
+                <div id="chat" class="tab-content" style="display: none;">
+                    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                        <h2 style="font-size: 1.5rem; font-weight: bold; color: #1f2937; margin-bottom: 1.5rem;">Live Chat Support</h2>
+                        
+                        <div style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">💬</div>
+                            <h3 style="font-size: 1.25rem; font-weight: 600; color: #1f2937; margin-bottom: 1rem;">
+                                Chat with our Support Team
+                            </h3>
+                            <p style="color: #6b7280; margin-bottom: 1.5rem;">
+                                Get real-time help from our agricultural experts and technical support team.
+                            </p>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+                                <div style="display: flex; gap: 1rem; font-size: 0.875rem; color: #6b7280;">
+                                    <span>🕐 Mon-Fri: 9AM-6PM IST</span>
+                                    <span>🕐 Sat: 9AM-2PM IST</span>
+                                </div>
+                                
+                                <button onclick="startLiveChat()" style="background-color: #16a34a; color: white; padding: 0.75rem 2rem; border: none; border-radius: 0.75rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease;">
+                                    Start Live Chat
+                                </button>
+                            </div>
+                        </div>
+
+                        <div style="font-size: 0.875rem; color: #6b7280; margin-bottom: 2rem;">
+                            <p>Average response time: < 2 minutes</p>
+                            <p>Customer satisfaction: 98.5%</p>
+                        </div>
+
+                        <!-- Alternative Contact Methods -->
+                        <div style="padding: 1.5rem; background-color: #f9fafb; border-radius: 1rem;">
+                            <h4 style="font-weight: 600; color: #1f2937; margin-bottom: 1rem;">Other Ways to Reach Us</h4>
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.875rem;">
+                                <p>📧 Email: support@krishimitra.ai</p>
+                                <p>📞 Phone: +91 98765 43210</p>
+                                <p>💬 WhatsApp: +91 98765 43210</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ data
+        const faqData = [
+            {
+                question: "How does KrishiMitra help with crop management?",
+                answer: "KrishiMitra provides AI-powered advice on crop planning, pest control, fertilizer recommendations, and harvesting schedules based on your specific location and crop type."
+            },
+            {
+                question: "Can I upload images for plant disease identification?",
+                answer: "Yes! You can upload photos of your crops, and our AI will analyze them to identify diseases, pests, and nutritional deficiencies with high accuracy."
+            },
+            {
+                question: "Is weather data included in farming recommendations?",
+                answer: "Absolutely. KrishiMitra considers local weather patterns and forecasts to provide timely advice on irrigation, planting, and harvesting."
+            },
+            {
+                question: "How accurate are the soil analysis recommendations?",
+                answer: "Our AI analyzes soil test reports and provides precise fertilizer and amendment recommendations. For best results, upload recent soil test reports."
+            },
+            {
+                question: "Can I get market price information?",
+                answer: "Yes, KrishiMitra provides real-time market prices and demand forecasts to help you make informed decisions about when and where to sell your produce."
+            },
+            {
+                question: "Is KrishiMitra available in regional languages?",
+                answer: "Yes! KrishiMitra supports multiple regional languages including Hindi, Bengali, Tamil, Telugu, Marathi, and others to serve farmers across India."
+            }
+        ];
+
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).style.display = 'block';
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Initialize FAQ
+        function initFAQ() {
+            const faqList = document.getElementById('faqList');
+            
+            faqData.forEach((item, index) => {
+                const faqItem = document.createElement('div');
+                faqItem.className = 'faq-item';
+                faqItem.innerHTML = `
+                    <button class="faq-question" onclick="toggleFAQ(${index})">
+                        <span>${item.question}</span>
+                        <span id="faq-icon-${index}">+</span>
+                    </button>
+                    <div class="faq-answer" id="faq-answer-${index}">
+                        ${item.answer}
+                    </div>
+                `;
+                faqList.appendChild(faqItem);
+            });
+        }
+
+        // Toggle FAQ
+        function toggleFAQ(index) {
+            const answer = document.getElementById(`faq-answer-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            if (answer.classList.contains('show')) {
+                answer.classList.remove('show');
+                icon.textContent = '+';
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.remove('show'));
+                document.querySelectorAll('[id^="faq-icon-"]').forEach(ic => ic.textContent = '+');
+                
+                // Open this FAQ
+                answer.classList.add('show');
+                icon.textContent = '−';
+            }
+        }
+
+        // Support form submission
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const messageDiv = document.getElementById('supportMessage');
+            const button = document.getElementById('supportSubmitBtn');
+            
+            // Show loading state
+            button.textContent = 'Sending...';
+            button.disabled = true;
+            messageDiv.style.display = 'none';
+            
+            // Simulate form submission
+            setTimeout(() => {
+                messageDiv.style.display = 'block';
+                messageDiv.style.backgroundColor = '#f0fdf4';
+                messageDiv.style.color = '#16a34a';
+                messageDiv.style.border = '1px solid #bbf7d0';
+                messageDiv.textContent = '✅ Support ticket created successfully! We\'ll get back to you soon.';
+                
+                // Reset form
+                document.getElementById('supportForm').reset();
+                
+                // Reset button
+                button.textContent = 'Send Message';
+                button.disabled = false;
+            }, 1500);
+        });
+
+        // Start live chat
+        function startLiveChat() {
+            alert('Live chat would be integrated here in a real application. For now, please use the contact form or email support@krishimitra.ai');
+        }
+
+        // Initialize page
+        initFAQ();
+    </script>
+
+    <style>
+        .doc-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .doc-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+    </style>
+</body>
+</html>
